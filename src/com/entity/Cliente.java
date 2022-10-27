@@ -41,7 +41,7 @@ public class Cliente {
         if (cedula.length() !=10){
             throw new IllegalArgumentException("EL LARGO DE LA CEDULA DEBE SER DE 10");
         }
-        if(!"-".equals(cedula.charAt(8))){
+        if("-".indexOf(cedula.charAt(8)) == -1){
             throw new IllegalArgumentException("CEDULA DEBE CONTENER GUION MEDIO (-)");
         }
         if("1234567890K".indexOf(cedula.charAt(9)) == -1){
