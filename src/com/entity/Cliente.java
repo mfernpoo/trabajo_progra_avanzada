@@ -7,9 +7,9 @@ public class Cliente {
     private boolean vigencia;
 
     public Cliente(String nombre, String cedula, boolean vigencia) {
-        this.nombre = nombre;
+        this.setNombre(nombre);
         this.setCedula(cedula);
-        this.vigencia = vigencia;
+        this.setVigencia(vigencia);
     }
 
     public String getNombre() {
@@ -32,6 +32,13 @@ public class Cliente {
     public boolean isVigencia() {
         return vigencia;
     }
+    public String getVigencia(){
+        if (this.isVigencia()){
+            return "Vigente";
+        }else {
+            return "No vigentre";
+        }
+    }
 
     public void setVigencia(boolean vigencia) {
         this.vigencia = vigencia;
@@ -44,7 +51,7 @@ public class Cliente {
         if("-".indexOf(cedula.charAt(8)) == -1){
             throw new IllegalArgumentException("CEDULA DEBE CONTENER GUION MEDIO (-)");
         }
-        if("1234567890K".indexOf(cedula.charAt(9)) == -1){
+        if("1234567890Kk".indexOf(cedula.charAt(9)) == -1){
             throw new IllegalArgumentException("DIGITO VERIFICADOR DEBE ESTAR ENTRE 1234567890K");
         }
     }
@@ -53,5 +60,9 @@ public class Cliente {
     public void deshablilitar(){
         this.setVigencia(false);
         System.out.println("CLIENTE DESHABILITADO");
+    }
+
+    public static void mensaje(String mensaje){
+        System.out.println(mensaje);
     }
 }

@@ -62,6 +62,15 @@ public class Vehiculo {
         return condicion;
     }
 
+    public String getCondicionVehiculo() {
+        return switch (this.getCondicion()){
+            case 'D' -> "Disponible";
+            case 'A' -> "Arrendado";
+            case 'M' -> "En mantencion";
+            default -> throw new IllegalStateException("Unexpected value: " + this.getCondicion());
+        };
+    }
+
     public void setCondicion(char condicion) {
         if (condicion != 'A' && condicion != 'D' && condicion != 'M') {
             throw new IllegalArgumentException("LA CONDICIÓN DEL VEHÍCULO NO ES VÁLIDA");
@@ -79,8 +88,10 @@ public class Vehiculo {
 
     private void esMayuscula(String elemento,String valor) {
         for(char caracter : elemento.toCharArray()){
-            if (Character.isUpperCase(caracter)){
-                throw new IllegalArgumentException(valor.concat(" DEBE ESCRIBIRSE EN MAYÚSCULA"));
+            if (!Character.isSpaceChar(caracter) && Character.isLetter(caracter)){
+                if (!Character.isUpperCase(caracter)){
+                    throw new IllegalArgumentException(valor.concat(" DEBE ESCRIBIRSE EN MAYÚSCULA"));
+                }
             }
         }
     }
@@ -94,5 +105,9 @@ public class Vehiculo {
         }
         this.setCondicion('M');
         System.out.println("VEHICULO EN MANTENCION");
+    }
+
+    public static void mensaje(String mensaje){
+        System.out.println(mensaje);
     }
 }

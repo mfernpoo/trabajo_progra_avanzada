@@ -17,4 +17,8 @@ public class Devolucion {
     public void setFecha_devolucion(LocalDate fecha_devolucion) {
         this.fecha_devolucion = fecha_devolucion;
     }
+
+    public static void mensaje(String mensaje){
+        System.out.println(mensaje);
+    }
 }
