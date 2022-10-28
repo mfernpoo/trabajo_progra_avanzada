@@ -65,4 +65,13 @@ public class Cliente {
     public static void mensaje(String mensaje){
         System.out.println(mensaje);
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "nombre='" + nombre + '\'' +
+                ", cedula='" + cedula + '\'' +
+                ", vigencia=" + vigencia +
+                '}';
+    }
 }

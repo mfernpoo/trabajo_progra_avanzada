@@ -81,7 +81,7 @@ public class Vehiculo {
     public void validarPatente(String patente){
         this.esMayuscula(patente,"patente");
         if (patente.length() != 8){
-            throw new IllegalArgumentException("EL LARGO DE LA PATENTE DEBE SER DE 8");
+            throw new IllegalArgumentException("EL LARGO DE LA PATENTE DEBE SER DE LARGO 8");
         }
         this.setPatente(patente);
     }
@@ -109,5 +109,16 @@ public class Vehiculo {
 
     public static void mensaje(String mensaje){
         System.out.println(mensaje);
+    }
+
+    @Override
+    public String toString() {
+        return "Vehiculo{" +
+                "patente='" + patente + '\'' +
+                ", marca='" + marca + '\'' +
+                ", anio_fabricacion=" + anio_fabricacion +
+                ", modelo='" + modelo + '\'' +
+                ", condicion=" + condicion +
+                '}';
     }
 }

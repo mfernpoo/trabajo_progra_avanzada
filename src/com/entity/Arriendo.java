@@ -10,7 +10,6 @@ public class Arriendo {
     private Cliente cliente;
     private int monto;
     private int dias;
-    private Devolucion devolucion;
 
     public Arriendo(int numero, LocalDate fecha_arriendo, Vehiculo vehiculo, Cliente cliente, int monto, int dias) {
         this.setNumero(numero);
@@ -73,14 +72,6 @@ public class Arriendo {
         }
     }
 
-    public Devolucion getDevolucion() {
-        return devolucion;
-    }
-
-    public void setDevolucion(Devolucion devolucion) {
-        this.devolucion = devolucion;
-    }
-
     private boolean validarArriendo() {
         if (this.cliente.isVigencia() && this.getVehiculo().getCondicion() == 'D') {
             return true;
@@ -139,5 +130,17 @@ public class Arriendo {
                         this.getDias(),
                         this.calcularMonto()
                         ));
+    }
+
+    @Override
+    public String toString() {
+        return "Arriendo{" +
+                "numero=" + numero +
+                ", fecha_arriendo=" + fecha_arriendo +
+                ", vehiculo=" + vehiculo +
+                ", cliente=" + cliente +
+                ", monto=" + monto +
+                ", dias=" + dias +
+                '}';
     }
 }
