@@ -121,8 +121,8 @@ public class Arriendo {
                 - PRECIO DIARIO    : $%d
                 - FECHA            : %s   
                 - CLIENTE          : %s/%s 
-                - DÍAS             : %d   
-                - A PAGAR          : %d
+                - DÍAS             : %d días   
+                - A PAGAR          : $%d
                 
                 ______________
                 FIRMA CLIENTE 
