@@ -1,6 +1,5 @@
 import com.entity.Arriendo;
 import com.entity.Cliente;
-import com.entity.Devolucion;
 import com.entity.Vehiculo;
 
 import java.time.LocalDate;
@@ -29,8 +28,7 @@ public class Main {
         Vehiculo.mensaje("ESTADO DEL VEHICULO ES: "+ arriendoOk.getVehiculo().getCondicionVehiculo());
         //TODO generar ticket
         arriendoOk.generarTicket();
-        Devolucion devolucionOk = new Devolucion(arriendoOk.getVehiculo(),arriendoOk);
-        devolucionOk.devolver();
+        arriendoOk.devolucion(arriendoOk.getVehiculo());
         Vehiculo.mensaje("ESTADO DEL VEHICULO ES: "+ arriendoOk.getVehiculo().getCondicionVehiculo());
         LocalDate localDateko = LocalDate.of(2022,10,27);
         Vehiculo vehiculoko = new Vehiculo("QUEPEDOO3", "FORD", 1999, "ECO SPORT", 'A');
@@ -41,8 +39,7 @@ public class Main {
         Arriendo arriendoko2 =
                 new Arriendo(RandomGenerator.getDefault().nextInt(),localDateko,vehiculoko,clienteko,60000,10 );
         Vehiculo vehiculoko2 = new Vehiculo("QUEPEDO5", "FORD", 2000, "ECO SPORT", 'A');
-        Devolucion devolucionKo = new Devolucion(vehiculoko2,arriendoko2);
-        devolucionKo.devolver();
+        arriendoko2.devolucion(vehiculoko2);
 
     }
 }

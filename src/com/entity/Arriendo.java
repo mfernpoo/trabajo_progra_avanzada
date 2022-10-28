@@ -10,6 +10,7 @@ public class Arriendo {
     private Cliente cliente;
     private int monto;
     private int dias;
+    private Devolucion devolucion;
 
     public Arriendo(int numero, LocalDate fecha_arriendo, Vehiculo vehiculo, Cliente cliente, int monto, int dias) {
         this.setNumero(numero);
@@ -18,6 +19,7 @@ public class Arriendo {
         this.setCliente(cliente);
         this.setMonto(monto);
         this.setDias(dias);
+        this.setDevolucion(new Devolucion(fecha_arriendo,dias));
     }
 
     public int getNumero() {
@@ -64,6 +66,14 @@ public class Arriendo {
         return dias;
     }
 
+    public Devolucion getDevolucion() {
+        return devolucion;
+    }
+
+    public void setDevolucion(Devolucion devolucion) {
+        this.devolucion = devolucion;
+    }
+
     public void setDias(int dias) {
         if (dias >= 1 && dias <= 10) {
             this.dias = dias;
@@ -83,14 +93,6 @@ public class Arriendo {
         if (this.validarArriendo()) {
             this.getVehiculo().setCondicion('A');
             System.out.println("AUTO ARRENDADO");
-        }
-        return false;
-    }
-
-    public boolean devolver() {
-        if (this.getVehiculo().getCondicion() == 'A' && this.getCliente().isVigencia()) {
-            this.getVehiculo().setCondicion('D');
-            return true;
         }
         return false;
     }
@@ -130,6 +132,27 @@ public class Arriendo {
                         this.getDias(),
                         this.calcularMonto()
                         ));
+    }
+
+    public boolean devolucion(Vehiculo vehiculoRecibido){
+        if (this.compareVehiculo(vehiculoRecibido)){
+            this.getVehiculo().disponible();
+            System.out.println("VEHICULO DEVUELTO");
+            return true;
+        }
+        System.err.println("VEHICULO ENTREGADO NO CONCUERDA CON EL VEHICULO ARRENDADO");
+        return false;
+    }
+
+    public boolean compareVehiculo(Vehiculo vehiculoRecibido){
+        return vehiculoRecibido.getPatente()
+                .equals(this.getVehiculo().getPatente())
+                && vehiculoRecibido.getMarca()
+                .equals(this.getVehiculo().getMarca())
+                && vehiculoRecibido.getModelo()
+                .equals(this.getVehiculo().getModelo())
+                && vehiculoRecibido.getAnio_fabricacion() ==
+                this.getVehiculo().getAnio_fabricacion();
     }
 
     @Override

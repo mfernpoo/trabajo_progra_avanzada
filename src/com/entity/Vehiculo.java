@@ -107,6 +107,14 @@ public class Vehiculo {
         System.out.println("VEHICULO EN MANTENCION");
     }
 
+    public void disponible(){
+        if(this.condicion != 'A' && this.condicion != 'M'){
+            throw new IllegalArgumentException("VEHICULO YA SE ENCUENTRA DISPONIBLE");
+        }
+        this.setCondicion('D');
+        System.out.println("VEHICULO DISPONIBLE");
+    }
+
     public static void mensaje(String mensaje){
         System.out.println(mensaje);
     }
